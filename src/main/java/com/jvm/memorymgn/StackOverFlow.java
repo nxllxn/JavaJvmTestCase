@@ -2,7 +2,7 @@ package com.jvm.memorymgn;
 
 
 /**
- * VM Args:-Xss128k 当指定为128k，报异常：The stack size specified is too small, Specify at least 228k
+ * VM Args:-Xss128k 当指定为128k，报异常：The stack size specified is too small, Specify at least 228k，笔者最小使用256k
  */
 public class StackOverFlow {
     private int stackDeep;
