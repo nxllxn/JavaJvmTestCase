@@ -1,6 +1,8 @@
 package com.jvm.memorymgn;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -48,11 +50,11 @@ public class StackOutOfMemory {
             }
         }
 
-        System.out.println("created:" + threadCount + " thread has been created!");
+        System.out.println("created:" + threadCount + " thread has been created! " + new SimpleDateFormat("mm:ss.SSS").format(new Date()));
 
         countDownLatchWrapper.countDownLatch.await();
 
-        System.out.println("all thread has finished!");
+        System.out.println("all thread has finished! " + new SimpleDateFormat("mm:ss.SSS").format(new Date()));
     }
 
     private static class CountDownLatchWrapper {

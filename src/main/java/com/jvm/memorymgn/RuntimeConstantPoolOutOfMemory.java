@@ -27,17 +27,17 @@ public class RuntimeConstantPoolOutOfMemory {
 
                 strPool.add(str.intern());
             }
-        }catch (OutOfMemoryError e){
+        } catch (OutOfMemoryError e) {
             e.printStackTrace();
 
-            System.out.println(String.format("共创建了%s个字符串，共%s字节",strPool.size(),byteCount));
+            System.out.println(String.format("共创建了%s个字符串，共%s字节", strPool.size(), byteCount));
         }
     }
 
-    public static void showJavaMagic(){
-        String str1=new StringBuilder("计算机").append("软件").toString();
-        System.out.println(str1.intern()==str1);
-        String str2=new StringBuilder("ja").append("va").toString();
-        System.out.println(str2.intern()==str2);
+    public static void showJavaMagic() {
+        String str1 = new StringBuilder("计算机").append("软件").toString();
+        System.out.println(str1.intern() == str1);
+        String str2 = new StringBuilder("ja").append("va").toString();
+        System.out.println(str2.intern() == str2);
     }
 }
