@@ -15,11 +15,6 @@ public class QPSController {
     public String helloWithoutHesitation() throws Exception{
         long startTimeInNano = System.nanoTime();
 
-        double d = 0D;
-        for (int index = 0;index < 1000000;index ++){
-            d *= index;
-        }
-
         logger.info("线程名称：{}，线程ID：{},请求时间：{}",
                 Thread.currentThread().getName(),
                 Thread.currentThread().getId(),
@@ -43,5 +38,22 @@ public class QPSController {
         return "I am fine!Thank you!and you?";
     }
 
+    @PostMapping("/helloWithComplicateCalculation")
+    public String helloWithComplicateCalculation() throws Exception{
+        long startTimeInNano = System.nanoTime();
 
+        //模拟比较复杂的cpu计算
+        double neverUsedValue = 0D;
+        for (int index = 0;index < 1000000;index ++){
+            neverUsedValue *= index;
+        }
+        logger.info("result:" + neverUsedValue);
+
+        logger.info("线程名称：{}，线程ID：{},请求时间：{}",
+                Thread.currentThread().getName(),
+                Thread.currentThread().getId(),
+                System.nanoTime() - startTimeInNano);
+
+        return "I am fine!Thank you!and you?";
+    }
 }
