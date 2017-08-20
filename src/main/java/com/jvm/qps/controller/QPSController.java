@@ -13,17 +13,35 @@ public class QPSController {
 
     @PostMapping("/helloWithoutHesitation")
     public String helloWithoutHesitation() throws Exception{
-        logger.info("线程名称：{}，线程ID：{}",Thread.currentThread().getName(),Thread.currentThread().getId());
+        long startTimeInNano = System.nanoTime();
+
+        double d = 0D;
+        for (int index = 0;index < 1000000;index ++){
+            d *= index;
+        }
+
+        logger.info("线程名称：{}，线程ID：{},请求时间：{}",
+                Thread.currentThread().getName(),
+                Thread.currentThread().getId(),
+                System.nanoTime() - startTimeInNano);
 
         return "I am fine!Thank you!and you?";
     }
 
     @PostMapping("/helloWithHesitation1000Millis")
     public String helloWithHesitation1000Millis() throws Exception{
-        logger.info("线程名称：{}，线程ID：{}",Thread.currentThread().getName(),Thread.currentThread().getId());
+        long startTimeInNano = System.nanoTime();
 
+        //模拟比较长的操作，比如io，复杂的数据计算等
         Thread.sleep(1000);
+
+        logger.info("线程名称：{}，线程ID：{},请求时间：{}",
+                Thread.currentThread().getName(),
+                Thread.currentThread().getId(),
+                System.nanoTime() - startTimeInNano);
 
         return "I am fine!Thank you!and you?";
     }
+
+
 }
